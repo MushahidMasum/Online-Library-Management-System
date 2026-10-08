@@ -14,8 +14,6 @@
       href="style.css?v=40">
 
 
-<!-- Google Fonts -->
-
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
 
@@ -30,9 +28,6 @@ rel="stylesheet">
 
 <style>
 
-/* =====================================
-          STUDENTS PAGE
-       ===================================== */
 
 .students-page {
 
@@ -73,9 +68,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          HEADER
-       ===================================== */
 
 .students-top {
 
@@ -116,10 +108,6 @@ rel="stylesheet">
     font-size: 15px;
 }
 
-
-/* =====================================
-          DASHBOARD BUTTON
-       ===================================== */
 
 .dashboard-btn {
 
@@ -163,10 +151,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          CONTROLS
-       ===================================== */
-
 .student-controls {
 
     display: flex;
@@ -180,10 +164,6 @@ rel="stylesheet">
     flex-wrap: wrap;
 }
 
-
-/* =====================================
-          SEARCH
-       ===================================== */
 
 .student-search {
 
@@ -229,10 +209,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          REFRESH
-       ===================================== */
-
 .refresh-btn {
 
     padding: 15px 21px;
@@ -272,9 +248,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          ADD STUDENT
-       ===================================== */
 
 .add-btn {
 
@@ -315,10 +288,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          TABLE CONTAINER
-       ===================================== */
-
 .students-table-container {
 
     width: 100%;
@@ -337,9 +306,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          TABLE
-       ===================================== */
 
 .students-page table {
 
@@ -358,10 +324,6 @@ rel="stylesheet">
     font-family: 'Poppins', sans-serif;
 }
 
-
-/* =====================================
-          TABLE HEADER
-       ===================================== */
 
 .students-page th {
 
@@ -387,9 +349,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          TABLE DATA
-       ===================================== */
 
 .students-page td {
 
@@ -409,10 +368,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          HOVER
-       ===================================== */
-
 .students-page tbody tr:hover td {
 
     background: #edf3ff;
@@ -421,9 +376,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          STUDENT ID
-       ===================================== */
 
 .student-id {
 
@@ -433,9 +385,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          STUDENT NAME
-       ===================================== */
 
 .student-name {
 
@@ -444,10 +393,6 @@ rel="stylesheet">
     font-weight: 600 !important;
 }
 
-
-/* =====================================
-          EMAIL
-       ===================================== */
 
 .email-badge {
 
@@ -467,9 +412,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          PHONE
-       ===================================== */
 
 .phone-text {
 
@@ -478,10 +420,6 @@ rel="stylesheet">
     font-weight: 600 !important;
 }
 
-
-/* =====================================
-          EMPTY MESSAGE
-       ===================================== */
 
 .empty-message {
 
@@ -495,9 +433,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          MOBILE
-       ===================================== */
 
 @media (max-width: 800px) {
 
@@ -551,9 +486,6 @@ rel="stylesheet">
 <body class="students-page">
 
 
-<!-- =====================================
-        HEADER
-   ===================================== -->
 
 <div class="students-top">
 
@@ -579,15 +511,9 @@ rel="stylesheet">
 </div>
 
 
-
-<!-- =====================================
-        CONTROLS
-   ===================================== -->
-
 <div class="student-controls">
 
 
-    <!-- SEARCH -->
 
     <div class="student-search">
 
@@ -598,9 +524,6 @@ rel="stylesheet">
 
     </div>
 
-
-    <!-- REFRESH -->
-
     <button
         class="refresh-btn"
         id="refreshButton">
@@ -610,12 +533,6 @@ rel="stylesheet">
     </button>
 
 
-    <!-- ADD STUDENT -->
-
-    <!--
-        This button will be visible
-        only for ADMIN.
-    -->
 
     <button
         class="add-btn"
@@ -628,11 +545,6 @@ rel="stylesheet">
 
 </div>
 
-
-
-<!-- =====================================
-        TABLE
-   ===================================== -->
 
 <div class="students-table-container">
 
@@ -677,18 +589,10 @@ rel="stylesheet">
 
 
 
-<!-- =====================================
-        JAVASCRIPT
-   ===================================== -->
-
 <script>
 
 let allStudents = [];
 
-
-/* =====================================
-          ROLE BASED ACCESS
-       ===================================== */
 
 function checkUserRole() {
 
@@ -700,9 +604,6 @@ function checkUserRole() {
         localStorage.getItem("userRole");
 
 
-    /*
-        Fallback username
-    */
 
     if (!username) {
 
@@ -712,10 +613,6 @@ function checkUserRole() {
     }
 
 
-    /*
-        If user is not logged in,
-        redirect to login.
-    */
 
     if (!username || !role) {
 
@@ -738,10 +635,6 @@ function checkUserRole() {
         );
 
 
-    /*
-        ADMIN
-        Show Add Student button
-    */
 
     if (role === "admin") {
 
@@ -751,10 +644,6 @@ function checkUserRole() {
     }
 
 
-    /*
-        STUDENT
-        Hide Add Student button
-    */
 
     else if (role === "student") {
 
@@ -764,9 +653,6 @@ function checkUserRole() {
     }
 
 
-    /*
-        Unknown role
-    */
 
     else {
 
@@ -791,10 +677,6 @@ function checkUserRole() {
 
 }
 
-
-/* =====================================
-          LOAD STUDENTS
-       ===================================== */
 
 function loadStudents() {
 
@@ -885,10 +767,6 @@ function loadStudents() {
 }
 
 
-/* =====================================
-          DISPLAY STUDENTS
-       ===================================== */
-
 function displayStudents(students) {
 
     const body =
@@ -974,9 +852,6 @@ function displayStudents(students) {
 }
 
 
-/* =====================================
-          SEARCH STUDENTS
-       ===================================== */
 
 function searchStudents() {
 
@@ -1053,9 +928,6 @@ function searchStudents() {
 }
 
 
-/* =====================================
-          SEARCH EVENT
-       ===================================== */
 
 document
     .getElementById(
@@ -1067,9 +939,6 @@ document
     );
 
 
-/* =====================================
-          REFRESH EVENT
-       ===================================== */
 
 document
     .getElementById(

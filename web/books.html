@@ -13,7 +13,7 @@
 <link rel="stylesheet"
       href="style.css?v=30">
 
-<!-- Google Fonts -->
+
 
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
@@ -29,9 +29,7 @@ rel="stylesheet">
 
 <style>
 
-/* =====================================
-          BOOKS PAGE
-       ===================================== */
+
 
 .books-page {
 
@@ -72,10 +70,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          HEADER
-       ===================================== */
-
 .books-top {
 
     display: flex;
@@ -115,10 +109,6 @@ rel="stylesheet">
     font-size: 15px;
 }
 
-
-/* =====================================
-          DASHBOARD BUTTON
-       ===================================== */
 
 .dashboard-btn {
 
@@ -162,9 +152,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          CONTROLS
-       ===================================== */
 
 .book-controls {
 
@@ -180,7 +167,6 @@ rel="stylesheet">
 }
 
 
-/* SEARCH */
 
 .search-box {
 
@@ -226,7 +212,6 @@ rel="stylesheet">
 }
 
 
-/* CATEGORY */
 
 .category-select {
 
@@ -252,7 +237,6 @@ rel="stylesheet">
 }
 
 
-/* REFRESH */
 
 .refresh-btn {
 
@@ -293,7 +277,6 @@ rel="stylesheet">
 }
 
 
-/* ADD BOOK */
 
 .add-btn {
 
@@ -334,9 +317,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          TABLE CONTAINER
-       ===================================== */
 
 .books-table-container {
 
@@ -356,9 +336,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          TABLE
-       ===================================== */
 
 .books-page table {
 
@@ -380,7 +357,6 @@ rel="stylesheet">
 }
 
 
-/* HEADER */
 
 .books-page th {
 
@@ -406,7 +382,6 @@ rel="stylesheet">
 }
 
 
-/* DATA */
 
 .books-page td {
 
@@ -426,7 +401,6 @@ rel="stylesheet">
 }
 
 
-/* HOVER */
 
 .books-page tbody tr:hover td {
 
@@ -436,9 +410,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          BOOK ID
-       ===================================== */
 
 .book-id {
 
@@ -448,9 +419,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          BOOK TITLE
-       ===================================== */
 
 .book-title {
 
@@ -460,9 +428,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          CATEGORY BADGE
-       ===================================== */
 
 .category-badge {
 
@@ -482,10 +447,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          AVAILABLE BADGE
-       ===================================== */
-
 .available-badge {
 
     display: inline-block;
@@ -504,9 +465,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          NOT AVAILABLE
-       ===================================== */
 
 .unavailable-badge {
 
@@ -526,9 +484,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          EMPTY MESSAGE
-       ===================================== */
 
 .empty-message {
 
@@ -542,9 +497,6 @@ rel="stylesheet">
 }
 
 
-/* =====================================
-          MOBILE
-       ===================================== */
 
 @media (max-width: 800px) {
 
@@ -599,9 +551,6 @@ rel="stylesheet">
 <body class="books-page">
 
 
-<!-- =====================================
-        HEADER
-   ===================================== -->
 
 <div class="books-top">
 
@@ -628,14 +577,10 @@ rel="stylesheet">
 
 
 
-<!-- =====================================
-        SEARCH + FILTER
-   ===================================== -->
 
 <div class="book-controls">
 
 
-    <!-- SEARCH -->
 
     <div class="search-box">
 
@@ -647,7 +592,6 @@ rel="stylesheet">
     </div>
 
 
-    <!-- CATEGORY -->
 
     <select
         id="categoryFilter"
@@ -660,7 +604,6 @@ rel="stylesheet">
     </select>
 
 
-    <!-- REFRESH -->
 
     <button
         class="refresh-btn"
@@ -671,13 +614,6 @@ rel="stylesheet">
     </button>
 
 
-    <!-- ADD BOOK -->
-
-    <!--
-        IMPORTANT:
-        This button is hidden for Student
-        using JavaScript below.
-    -->
 
     <button
         class="add-btn"
@@ -692,9 +628,6 @@ rel="stylesheet">
 
 
 
-<!-- =====================================
-        TABLE
-   ===================================== -->
 
 <div class="books-table-container">
 
@@ -743,18 +676,12 @@ rel="stylesheet">
 
 
 
-<!-- =====================================
-        JAVASCRIPT
-   ===================================== -->
 
 <script>
 
 let allBooks = [];
 
 
-/* =====================================
-       ROLE BASED ACCESS
-   ===================================== */
 
 function checkUserRole() {
 
@@ -765,10 +692,7 @@ function checkUserRole() {
         localStorage.getItem("userRole");
 
 
-    /*
-       Fallback in case loggedInUser
-       is not available.
-    */
+    
 
     if (!username) {
 
@@ -777,10 +701,6 @@ function checkUserRole() {
     }
 
 
-    /*
-       If user is not logged in,
-       send them to login page.
-    */
 
     if (!username || !role) {
 
@@ -798,10 +718,6 @@ function checkUserRole() {
         document.getElementById("addBookButton");
 
 
-    /*
-       ADMIN:
-       Show Add New Book button.
-    */
 
     if (role === "admin") {
 
@@ -810,10 +726,6 @@ function checkUserRole() {
     }
 
 
-    /*
-       STUDENT:
-       Hide Add New Book button.
-    */
 
     else if (role === "student") {
 
@@ -822,10 +734,6 @@ function checkUserRole() {
     }
 
 
-    /*
-       Unknown role:
-       Logout and go to login.
-    */
 
     else {
 
@@ -849,9 +757,6 @@ function checkUserRole() {
 }
 
 
-/* =====================================
-          LOAD BOOKS
-       ===================================== */
 
 function loadBooks() {
 
@@ -941,9 +846,6 @@ function loadBooks() {
 }
 
 
-/* =====================================
-          DISPLAY BOOKS
-       ===================================== */
 
 function displayBooks(books) {
 
@@ -1072,9 +974,6 @@ function displayBooks(books) {
 }
 
 
-/* =====================================
-          CREATE CATEGORY LIST
-       ===================================== */
 
 function createCategories() {
 
@@ -1140,10 +1039,6 @@ function createCategories() {
 }
 
 
-/* =====================================
-          SEARCH + CATEGORY FILTER
-       ===================================== */
-
 function filterBooks() {
 
     const searchInput =
@@ -1196,7 +1091,6 @@ function filterBooks() {
                     .toLowerCase();
 
 
-                /* SEARCH */
 
                 const searchMatch =
 
@@ -1215,7 +1109,6 @@ function filterBooks() {
                     );
 
 
-                /* CATEGORY */
 
                 const categoryMatch =
 
@@ -1247,9 +1140,6 @@ function filterBooks() {
 }
 
 
-/* =====================================
-          SEARCH EVENT
-       ===================================== */
 
 document
     .getElementById("searchInput")
@@ -1259,9 +1149,6 @@ document
     );
 
 
-/* =====================================
-          CATEGORY EVENT
-       ===================================== */
 
 document
     .getElementById("categoryFilter")
@@ -1271,9 +1158,6 @@ document
     );
 
 
-/* =====================================
-          REFRESH EVENT
-       ===================================== */
 
 document
     .getElementById("refreshButton")

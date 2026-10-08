@@ -682,15 +682,11 @@ body {
 }
 
 
-/* Alternate rows */
-
 .books-page tbody tr:nth-child(even) td {
     background:
         rgba(246, 248, 255, 0.85) !important;
 }
 
-
-/* Hover */
 
 .books-page tbody tr:hover td {
     background:
@@ -701,7 +697,6 @@ body {
 }
 
 
-/* Book ID */
 
 .books-page td:first-child {
     color: #5365e8 !important;
@@ -709,8 +704,6 @@ body {
     font-weight: 700 !important;
 }
 
-
-/* Available */
 
 .books-page td:last-child {
     color: #059669 !important;

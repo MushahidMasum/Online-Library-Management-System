@@ -8,27 +8,42 @@ public class DatabaseConnection {
 
     private static final String USER = "root";
 
-    private static final String PASSWORD = "Sahil786";
+    private static final String PASSWORD =
+            System.getenv("LIBRARY_DB_PASSWORD");
 
     public static Connection getConnection() {
+
         try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            if (PASSWORD == null || PASSWORD.isEmpty()) {
+                throw new RuntimeException(
+                    "LIBRARY_DB_PASSWORD environment variable is not set."
+                );
+            }
+
             Connection con = DriverManager.getConnection(
                     URL,
                     USER,
                     PASSWORD
             );
 
-            System.out.println("Database connected successfully!");
+            System.out.println(
+                "Database connected successfully!"
+            );
 
             return con;
 
         } catch (Exception e) {
-            System.out.println("DATABASE ERROR: " + e.getMessage());
+
+            System.out.println(
+                "DATABASE ERROR: " + e.getMessage()
+            );
+
             e.printStackTrace();
+
             throw new RuntimeException(e);
         }
     }
 }
-
-    
-

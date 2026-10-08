@@ -30,7 +30,6 @@
             color: #18245f;
         }
 
-        /* NAVBAR */
 
         .topbar {
             margin: 18px 20px;
@@ -78,7 +77,6 @@
             font-weight: 600;
         }
 
-        /* MAIN */
 
         .container {
             max-width: 1150px;
@@ -86,7 +84,6 @@
             padding: 0 25px;
         }
 
-        /* HEADING */
 
         .page-heading {
             margin-bottom: 28px;
@@ -110,7 +107,6 @@
             font-size: 16px;
         }
 
-        /* CARD */
 
         .return-card {
 
@@ -134,8 +130,6 @@
 
             gap: 50px;
         }
-
-        /* FORM */
 
         .form-section h2 {
             margin-top: 0;
@@ -192,7 +186,6 @@
                 0 0 0 4px rgba(100,80,230,0.12);
         }
 
-        /* BUTTON */
 
         .return-btn {
 
@@ -234,7 +227,6 @@
                 0 17px 30px rgba(92,75,230,0.35);
         }
 
-        /* RIGHT SIDE */
 
         .info-section {
 
@@ -304,7 +296,6 @@
             font-weight: 600;
         }
 
-        /* RESPONSIVE */
 
         @media (max-width: 850px) {
 
@@ -339,7 +330,6 @@
 
 <body>
 
-    <!-- NAVBAR -->
 
     <div class="topbar">
 
@@ -378,7 +368,6 @@
     </div>
 
 
-    <!-- MAIN -->
 
     <div class="container">
 
@@ -393,12 +382,10 @@
         </div>
 
 
-        <!-- CARD -->
 
         <div class="return-card">
 
 
-            <!-- FORM -->
 
             <div class="form-section">
 
@@ -452,7 +439,6 @@
             </div>
 
 
-            <!-- INFORMATION -->
 
             <div class="info-section">
 
@@ -495,7 +481,6 @@
         document.getElementById("message");
 
 
-    /* VALIDATION */
 
     if (studentId === "" || bookId === "") {
 
@@ -524,8 +509,6 @@
     }
 
 
-    /* FORM DATA */
-
     let formData =
         new URLSearchParams();
 
@@ -540,16 +523,12 @@
     );
 
 
-    /* LOADING MESSAGE */
 
     message.innerHTML =
         "⏳ Returning book...";
 
     message.style.color =
         "#6555ee";
-
-
-    /* SEND TO JAVA SERVLET */
 
     fetch("return-book", {
 
@@ -584,7 +563,6 @@
                 "#26965b";
 
 
-            /* CLEAR FORM */
 
             document.getElementById(
                 "returnStudentId"

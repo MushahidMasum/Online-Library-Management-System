@@ -79,8 +79,6 @@
         }
 
 
-        /* ROUND ICON */
-
         #profileIcon {
 
             width: 38px;
@@ -109,9 +107,6 @@
         }
 
 
-        /* ============================= */
-        /* PROFILE DROPDOWN */
-        /* ============================= */
 
         .profile-dropdown {
 
@@ -182,9 +177,6 @@
         }
 
 
-        /* ============================= */
-        /* PROFILE HEADER */
-        /* ============================= */
 
         .profile-header {
 
@@ -244,7 +236,6 @@
         }
 
 
-        /* LINE */
 
         .profile-line {
 
@@ -258,9 +249,6 @@
         }
 
 
-        /* ============================= */
-        /* PROFILE INFORMATION */
-        /* ============================= */
 
         .profile-info p {
 
@@ -279,9 +267,6 @@
         }
 
 
-        /* ============================= */
-        /* LOGOUT BUTTON */
-        /* ============================= */
 
         .logout-btn {
 
@@ -329,9 +314,6 @@
         }
 
 
-        /* ============================= */
-        /* MOBILE */
-        /* ============================= */
 
         @media (max-width: 900px) {
 
@@ -360,14 +342,10 @@
 <body>
 
 
-    <!-- ================================= -->
-    <!-- NAVBAR -->
-    <!-- ================================= -->
 
     <nav class="navbar">
 
 
-        <!-- LOGO -->
 
         <div class="logo">
 
@@ -380,7 +358,6 @@
         </div>
 
 
-        <!-- NAVIGATION -->
 
         <div class="nav-links">
 
@@ -431,9 +408,6 @@
         </div>
 
 
-        <!-- ================================= -->
-        <!-- PROFILE -->
-        <!-- ================================= -->
 
         <div class="profile-container">
 
@@ -462,14 +436,12 @@
             </button>
 
 
-            <!-- PROFILE DROPDOWN -->
 
             <div
                 class="profile-dropdown"
                 id="profileDropdown">
 
 
-                <!-- PROFILE HEADER -->
 
                 <div class="profile-header">
 
@@ -502,13 +474,11 @@
                 </div>
 
 
-                <!-- LINE -->
 
                 <div class="profile-line">
                 </div>
 
 
-                <!-- INFORMATION -->
 
                 <div class="profile-info">
 
@@ -544,7 +514,6 @@
                 </div>
 
 
-                <!-- LOGOUT -->
 
                 <button
                     class="logout-btn"
@@ -565,9 +534,6 @@
     </nav>
 
 
-    <!-- ================================= -->
-    <!-- HERO SECTION -->
-    <!-- ================================= -->
 
     <section class="hero">
 
@@ -619,14 +585,10 @@
     </section>
 
 
-    <!-- ================================= -->
-    <!-- DASHBOARD -->
-    <!-- ================================= -->
 
     <main class="dashboard">
 
 
-        <!-- BOOKS -->
 
         <div class="card books-card">
 
@@ -670,7 +632,6 @@
         </div>
 
 
-        <!-- STUDENTS -->
 
         <div class="card students-card">
 
@@ -714,7 +675,6 @@
         </div>
 
 
-        <!-- ISSUE BOOK -->
 
         <div class="card issue-card">
 
@@ -758,7 +718,6 @@
         </div>
 
 
-        <!-- RETURN BOOK -->
 
         <div class="card return-card">
 
@@ -802,7 +761,6 @@
         </div>
 
 
-        <!-- ISSUED BOOKS -->
 
         <div class="card issued-card">
 
@@ -849,16 +807,10 @@
     </main>
 
 
-    <!-- ================================= -->
-    <!-- PROFILE JAVASCRIPT -->
-    <!-- ================================= -->
 
     <script>
 
 
-        /* =================================
-           GET LOGIN DETAILS
-        ================================= */
 
         let username =
             localStorage.getItem("loggedInUser");
@@ -876,10 +828,6 @@
         }
 
 
-        /*
-         * If user is not logged in,
-         * send them to login page.
-         */
 
         if (!username || !role) {
 
@@ -890,9 +838,6 @@
         }
 
 
-        /* =================================
-           ELEMENTS
-        ================================= */
 
         const profileName =
             document.getElementById(
@@ -936,17 +881,11 @@
             );
 
 
-        /* =================================
-           COMMON USERNAME
-        ================================= */
 
         profileUsername.innerText =
             username;
 
 
-        /* =================================
-           ADMIN PROFILE
-        ================================= */
 
         if (role.toLowerCase() === "admin") {
 
@@ -977,9 +916,6 @@
         }
 
 
-        /* =================================
-           STUDENT PROFILE
-        ================================= */
 
         else if (
             role.toLowerCase() === "student"
@@ -1012,9 +948,6 @@
         }
 
 
-        /* =================================
-           UNKNOWN ROLE
-        ================================= */
 
         else {
 
@@ -1036,9 +969,6 @@
         }
 
 
-        /* =================================
-           TOGGLE PROFILE
-        ================================= */
 
         function toggleProfile(event) {
 
@@ -1055,9 +985,6 @@
         }
 
 
-        /* =================================
-           LOGOUT
-        ================================= */
 
         function logout() {
 
@@ -1080,10 +1007,6 @@
         }
 
 
-        /* =================================
-           CLOSE PROFILE
-           WHEN CLICKING OUTSIDE
-        ================================= */
 
         document.addEventListener(
             "click",

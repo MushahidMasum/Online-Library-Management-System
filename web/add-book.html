@@ -29,7 +29,6 @@
                 linear-gradient(135deg, #dff4ff, #eee7ff, #ffe8f5);
         }
 
-        /* NAVBAR */
 
         .topbar {
             margin: 18px 20px;
@@ -77,7 +76,6 @@
             font-weight: 600;
         }
 
-        /* CONTAINER */
 
         .container {
             max-width: 1250px;
@@ -85,7 +83,6 @@
             padding: 0 25px;
         }
 
-        /* HEADING */
 
         .page-heading {
             margin-bottom: 15px;
@@ -109,7 +106,6 @@
             font-size: 16px;
         }
 
-        /* BACK BUTTON */
 
         .back-btn {
             display: inline-block;
@@ -138,7 +134,6 @@
             background: white;
         }
 
-        /* MAIN CARD */
 
         .book-card {
 
@@ -163,7 +158,6 @@
             gap: 40px;
         }
 
-        /* FORM */
 
         .form-section h2 {
 
@@ -236,7 +230,6 @@
             gap: 20px;
         }
 
-        /* ADD BUTTON */
 
         .add-btn {
 
@@ -280,7 +273,6 @@
                 0 17px 30px rgba(92,75,230,0.35);
         }
 
-        /* RIGHT SIDE */
 
         .info-section {
 
@@ -359,7 +351,7 @@
             min-height: 24px;
         }
 
-        /* RESPONSIVE */
+
 
         @media (max-width: 850px) {
 
@@ -406,7 +398,6 @@
 
 <body>
 
-    <!-- NAVBAR -->
 
     <div class="topbar">
 
@@ -445,7 +436,6 @@
     </div>
 
 
-    <!-- MAIN -->
 
     <div class="container">
 
@@ -460,19 +450,16 @@
         </div>
 
 
-        <!-- BACK -->
 
         <a href="books.html" class="back-btn">
             ← Back to Books
         </a>
 
 
-        <!-- CARD -->
 
         <div class="book-card">
 
 
-            <!-- FORM -->
 
             <div class="form-section">
 
@@ -483,7 +470,6 @@
                 </p>
 
 
-                <!-- TITLE -->
 
                 <div class="field">
 
@@ -500,7 +486,6 @@
                 </div>
 
 
-                <!-- AUTHOR + CATEGORY -->
 
                 <div class="two-fields">
 
@@ -566,7 +551,6 @@
                 </div>
 
 
-                <!-- QUANTITY -->
 
                 <div class="two-fields">
 
@@ -617,7 +601,6 @@
             </div>
 
 
-            <!-- INFORMATION -->
 
             <div class="info-section">
 
@@ -665,7 +648,6 @@
     </div>
 
 
-    <!-- DATABASE CONNECTED JAVASCRIPT -->
 
     <script>
 
@@ -690,7 +672,6 @@
                 document.getElementById("message");
 
 
-            /* VALIDATION */
 
             if (
                 title === "" ||
@@ -726,7 +707,6 @@
             }
 
 
-            /* FORM DATA */
 
             let formData =
                 new URLSearchParams();
@@ -742,7 +722,6 @@
             formData.append("available", available);
 
 
-            /* SEND DATA TO JAVA SERVLET */
 
             message.innerHTML =
                 "⏳ Adding book...";
@@ -781,8 +760,6 @@
                     message.style.color =
                         "#26965b";
 
-
-                    /* CLEAR FORM */
 
                     document.getElementById("bookTitle").value = "";
 
