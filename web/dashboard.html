@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Library Dashboard</title>
+
+    <link rel="stylesheet"
+          href="style.css?v=4">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+
+        .profile-container {
+
+            position: relative;
+
+            margin-left: 20px;
+        }
+
+
+        .profile-btn {
+
+            border: none;
+
+            background:
+                rgba(255,255,255,0.15);
+
+            color: white;
+
+            padding:
+                7px 12px 7px 7px;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .profile-btn:hover {
+
+            background:
+                rgba(255,255,255,0.25);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* ROUND ICON */
+
+        #profileIcon {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+
+        .profile-arrow {
+
+            font-size: 17px;
+
+            margin-left: 2px;
+        }
+
+
+        /* ============================= */
+        /* PROFILE DROPDOWN */
+        /* ============================= */
+
+        .profile-dropdown {
+
+            position: absolute;
+
+            top: 58px;
+
+            right: 0;
+
+            width: 310px;
+
+            padding: 22px;
+
+            background:
+                rgba(255,255,255,0.97);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            border-radius: 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.9);
+
+            box-shadow:
+                0 22px 55px
+                rgba(30,40,100,0.25);
+
+            display: none;
+
+            z-index: 9999;
+
+            color: #18245f;
+        }
+
+
+        .profile-dropdown.show {
+
+            display: block;
+
+            animation:
+                profileOpen
+                0.2s ease;
+        }
+
+
+        @keyframes profileOpen {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(-8px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ============================= */
+        /* PROFILE HEADER */
+        /* ============================= */
+
+        .profile-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .big-profile-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dff4ff,
+                    #e7ddff
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 29px;
+
+            flex-shrink: 0;
+        }
+
+
+        .profile-header h3 {
+
+            margin: 0;
+
+            font-size: 20px;
+
+            color: #18245f;
+        }
+
+
+        .profile-header p {
+
+            margin:
+                4px 0 0;
+
+            font-size: 13px;
+
+            color: #69739a;
+        }
+
+
+        /* LINE */
+
+        .profile-line {
+
+            height: 1px;
+
+            background:
+                #e3e5f1;
+
+            margin:
+                18px 0;
+        }
+
+
+        /* ============================= */
+        /* PROFILE INFORMATION */
+        /* ============================= */
+
+        .profile-info p {
+
+            margin:
+                12px 0;
+
+            font-size: 13px;
+
+            color: #59658f;
+        }
+
+
+        .profile-info strong {
+
+            color: #18245f;
+        }
+
+
+        /* ============================= */
+        /* LOGOUT BUTTON */
+        /* ============================= */
+
+        .logout-btn {
+
+            width: 100%;
+
+            margin-top: 14px;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff6b6b,
+                    #e5487f
+                );
+
+            color: white;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .logout-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 9px 22px
+                rgba(220,70,100,0.25);
+        }
+
+
+        /* ============================= */
+        /* MOBILE */
+        /* ============================= */
+
+        @media (max-width: 900px) {
+
+            .profile-dropdown {
+
+                right: -10px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .profile-dropdown {
+
+                width: 280px;
+
+                right: -20px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================= -->
+    <!-- NAVBAR -->
+    <!-- ================================= -->
+
+    <nav class="navbar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            📖
+
+            <span>
+                Library System
+            </span>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="nav-links">
+
+
+            <a class="active"
+               href="dashboard.html">
+
+                🏠 Dashboard
+
+            </a>
+
+
+            <a href="books.html">
+
+                📚 Books
+
+            </a>
+
+
+            <a href="students.html">
+
+                👨‍🎓 Students
+
+            </a>
+
+
+            <a href="issue.html">
+
+                📄 Issue
+
+            </a>
+
+
+            <a href="return.html">
+
+                ↩️ Return
+
+            </a>
+
+
+            <a href="issued.html">
+
+                📊 Issued
+
+            </a>
+
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- PROFILE -->
+        <!-- ================================= -->
+
+        <div class="profile-container">
+
+
+            <button
+                class="profile-btn"
+                onclick="toggleProfile(event)"
+                type="button">
+
+
+                <span id="profileIcon">
+                    👤
+                </span>
+
+
+                <span id="profileName">
+                    User
+                </span>
+
+
+                <span class="profile-arrow">
+                    ⌄
+                </span>
+
+
+            </button>
+
+
+            <!-- PROFILE DROPDOWN -->
+
+            <div
+                class="profile-dropdown"
+                id="profileDropdown">
+
+
+                <!-- PROFILE HEADER -->
+
+                <div class="profile-header">
+
+
+                    <div
+                        class="big-profile-icon"
+                        id="bigProfileIcon">
+
+                        👤
+
+                    </div>
+
+
+                    <div>
+
+
+                        <h3 id="displayName">
+                            User
+                        </h3>
+
+
+                        <p id="displayRole">
+                            User
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- LINE -->
+
+                <div class="profile-line">
+                </div>
+
+
+                <!-- INFORMATION -->
+
+                <div class="profile-info">
+
+
+                    <p>
+
+                        👤
+
+                        <strong>
+                            Username:
+                        </strong>
+
+                        <span id="profileUsername">
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        🛡️
+
+                        <strong>
+                            Role:
+                        </strong>
+
+                        <span id="profileRole">
+                        </span>
+
+                    </p>
+
+
+                </div>
+
+
+                <!-- LOGOUT -->
+
+                <button
+                    class="logout-btn"
+                    onclick="logout()"
+                    type="button">
+
+                    🚪 Logout
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </nav>
+
+
+    <!-- ================================= -->
+    <!-- HERO SECTION -->
+    <!-- ================================= -->
+
+    <section class="hero">
+
+
+        <p class="welcome">
+
+            WELCOME TO
+
+        </p>
+
+
+        <h1>
+
+            Online Library
+
+        </h1>
+
+
+        <h2>
+
+            Management System
+
+        </h2>
+
+
+        <p class="tagline">
+
+            READ • LEARN • EXPLORE • GROW
+
+        </p>
+
+
+        <div
+            class="hero-decoration left-books">
+
+            📚
+
+        </div>
+
+
+        <div
+            class="hero-decoration right-books">
+
+            📖
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ================================= -->
+    <!-- DASHBOARD -->
+    <!-- ================================= -->
+
+    <main class="dashboard">
+
+
+        <!-- BOOKS -->
+
+        <div class="card books-card">
+
+
+            <div class="card-icon">
+
+                📚
+
+            </div>
+
+
+            <div class="card-content">
+
+
+                <h3>
+
+                    Books
+
+                </h3>
+
+
+                <p>
+
+                    View and manage books in the library
+
+                </p>
+
+
+                <button
+                    type="button"
+                    onclick="window.location.href='books.html'">
+
+                    View Books →
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- STUDENTS -->
+
+        <div class="card students-card">
+
+
+            <div class="card-icon">
+
+                🎓
+
+            </div>
+
+
+            <div class="card-content">
+
+
+                <h3>
+
+                    Students
+
+                </h3>
+
+
+                <p>
+
+                    View and manage students
+
+                </p>
+
+
+                <button
+                    type="button"
+                    onclick="window.location.href='students.html'">
+
+                    View Students →
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ISSUE BOOK -->
+
+        <div class="card issue-card">
+
+
+            <div class="card-icon">
+
+                📄
+
+            </div>
+
+
+            <div class="card-content">
+
+
+                <h3>
+
+                    Issue Book
+
+                </h3>
+
+
+                <p>
+
+                    Issue a book to a student
+
+                </p>
+
+
+                <button
+                    type="button"
+                    onclick="window.location.href='issue.html'">
+
+                    Issue Book →
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- RETURN BOOK -->
+
+        <div class="card return-card">
+
+
+            <div class="card-icon">
+
+                ↩️
+
+            </div>
+
+
+            <div class="card-content">
+
+
+                <h3>
+
+                    Return Book
+
+                </h3>
+
+
+                <p>
+
+                    Return an issued book
+
+                </p>
+
+
+                <button
+                    type="button"
+                    onclick="window.location.href='return.html'">
+
+                    Return Book →
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ISSUED BOOKS -->
+
+        <div class="card issued-card">
+
+
+            <div class="card-icon">
+
+                📊
+
+            </div>
+
+
+            <div class="card-content">
+
+
+                <h3>
+
+                    Issued Books
+
+                </h3>
+
+
+                <p>
+
+                    View issued and returned books
+
+                </p>
+
+
+                <button
+                    type="button"
+                    onclick="window.location.href='issued.html'">
+
+                    View Issued Books →
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================================= -->
+    <!-- PROFILE JAVASCRIPT -->
+    <!-- ================================= -->
+
+    <script>
+
+
+        /* =================================
+           GET LOGIN DETAILS
+        ================================= */
+
+        let username =
+            localStorage.getItem("loggedInUser");
+
+        let role =
+            localStorage.getItem("userRole");
+
+
+
+        if (!username) {
+
+            username =
+                localStorage.getItem("username");
+
+        }
+
+
+        /*
+         * If user is not logged in,
+         * send them to login page.
+         */
+
+        if (!username || !role) {
+
+            window.location.replace(
+                "login.html"
+            );
+
+        }
+
+
+        /* =================================
+           ELEMENTS
+        ================================= */
+
+        const profileName =
+            document.getElementById(
+                "profileName"
+            );
+
+
+        const profileUsername =
+            document.getElementById(
+                "profileUsername"
+            );
+
+
+        const profileRole =
+            document.getElementById(
+                "profileRole"
+            );
+
+
+        const displayName =
+            document.getElementById(
+                "displayName"
+            );
+
+
+        const displayRole =
+            document.getElementById(
+                "displayRole"
+            );
+
+
+        const profileIcon =
+            document.getElementById(
+                "profileIcon"
+            );
+
+
+        const bigProfileIcon =
+            document.getElementById(
+                "bigProfileIcon"
+            );
+
+
+        /* =================================
+           COMMON USERNAME
+        ================================= */
+
+        profileUsername.innerText =
+            username;
+
+
+        /* =================================
+           ADMIN PROFILE
+        ================================= */
+
+        if (role.toLowerCase() === "admin") {
+
+
+            profileName.innerText =
+                "Admin";
+
+
+            displayName.innerText =
+                "Admin";
+
+
+            displayRole.innerText =
+                "Administrator";
+
+
+            profileRole.innerText =
+                "Administrator";
+
+
+            profileIcon.innerText =
+                "👨‍💼";
+
+
+            bigProfileIcon.innerText =
+                "👨‍💼";
+
+        }
+
+
+        /* =================================
+           STUDENT PROFILE
+        ================================= */
+
+        else if (
+            role.toLowerCase() === "student"
+        ) {
+
+
+            profileName.innerText =
+                "Student";
+
+
+            displayName.innerText =
+                username;
+
+
+            displayRole.innerText =
+                "Student";
+
+
+            profileRole.innerText =
+                "Student";
+
+
+            profileIcon.innerText =
+                "🎓";
+
+
+            bigProfileIcon.innerText =
+                "🎓";
+
+        }
+
+
+        /* =================================
+           UNKNOWN ROLE
+        ================================= */
+
+        else {
+
+            localStorage.removeItem(
+                "loggedInUser"
+            );
+
+            localStorage.removeItem(
+                "username"
+            );
+
+            localStorage.removeItem(
+                "userRole"
+            );
+
+            window.location.replace(
+                "login.html"
+            );
+        }
+
+
+        /* =================================
+           TOGGLE PROFILE
+        ================================= */
+
+        function toggleProfile(event) {
+
+            event.stopPropagation();
+
+            const dropdown =
+                document.getElementById(
+                    "profileDropdown"
+                );
+
+            dropdown.classList.toggle(
+                "show"
+            );
+        }
+
+
+        /* =================================
+           LOGOUT
+        ================================= */
+
+        function logout() {
+
+            localStorage.removeItem(
+                "loggedInUser"
+            );
+
+            localStorage.removeItem(
+                "username"
+            );
+
+            localStorage.removeItem(
+                "userRole"
+            );
+
+
+            window.location.replace(
+                "login.html"
+            );
+        }
+
+
+        /* =================================
+           CLOSE PROFILE
+           WHEN CLICKING OUTSIDE
+        ================================= */
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                const container =
+                    document.querySelector(
+                        ".profile-container"
+                    );
+
+
+                const dropdown =
+                    document.getElementById(
+                        "profileDropdown"
+                    );
+
+
+                if (
+                    container &&
+                    !container.contains(
+                        event.target
+                    )
+                ) {
+
+                    dropdown.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add New Student</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: 'Poppins', sans-serif;
+
+            color: #17245f;
+
+            background:
+                radial-gradient(
+                    circle at 8% 15%,
+                    rgba(72, 184, 255, 0.38),
+                    transparent 27%
+                ),
+
+                radial-gradient(
+                    circle at 92% 18%,
+                    rgba(174, 113, 255, 0.38),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 75% 90%,
+                    rgba(255, 126, 194, 0.32),
+                    transparent 28%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #dff7ff,
+                    #e9e8ff,
+                    #f8e6ff,
+                    #ffe9f4
+                );
+        }
+
+
+        /* NAVBAR */
+
+        .topbar {
+
+            margin: 18px 22px;
+
+            padding: 20px 38px;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(18, 47, 125, 0.97),
+                    rgba(77, 47, 153, 0.94)
+                );
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            box-shadow:
+                0 18px 45px rgba(48, 48, 120, 0.28);
+        }
+
+
+        .logo {
+
+            font-size: 27px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.2px;
+        }
+
+
+        .nav {
+
+            display: flex;
+
+            gap: 24px;
+
+            align-items: center;
+        }
+
+
+        .nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+
+        .nav a:hover {
+
+            transform: translateY(-2px);
+
+            opacity: 0.85;
+        }
+
+
+        .nav a.active {
+
+            background: white;
+
+            color: #343bc5;
+
+            padding: 12px 20px;
+
+            border-radius: 14px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 6px 15px rgba(0,0,0,0.12);
+        }
+
+
+        /* CONTAINER */
+
+        .container {
+
+            max-width: 1350px;
+
+            margin: 55px auto;
+
+            padding: 0 35px;
+        }
+
+
+        /* HEADING */
+
+        .page-heading {
+
+            margin-bottom: 18px;
+        }
+
+
+        .page-heading h1 {
+
+            margin: 0;
+
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 58px;
+
+            letter-spacing: 0.3px;
+
+            color: #17276f;
+
+            text-shadow:
+                0 5px 15px rgba(40, 60, 140, 0.08);
+        }
+
+
+        .page-heading p {
+
+            margin-top: 10px;
+
+            color: #68739e;
+
+            font-size: 17px;
+        }
+
+
+        /* BACK BUTTON */
+
+        .back-btn {
+
+            display: inline-block;
+
+            margin: 15px 0 30px;
+
+            padding: 14px 25px;
+
+            border-radius: 15px;
+
+            background: rgba(255,255,255,0.82);
+
+            color: #3542c4;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 10px 25px rgba(60,60,130,0.13);
+
+            transition: 0.3s;
+        }
+
+
+        .back-btn:hover {
+
+            transform: translateX(-5px);
+
+            background: white;
+        }
+
+
+        /* MAIN CARD */
+
+        .student-card {
+
+            background:
+                rgba(255,255,255,0.70);
+
+            backdrop-filter: blur(24px);
+
+            -webkit-backdrop-filter: blur(24px);
+
+            border:
+                1px solid rgba(255,255,255,0.85);
+
+            border-radius: 32px;
+
+            padding: 48px;
+
+            box-shadow:
+                0 28px 70px rgba(60,60,140,0.18);
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 0.85fr;
+
+            gap: 55px;
+        }
+
+
+        /* FORM */
+
+        .form-section h2 {
+
+            margin-top: 0;
+
+            margin-bottom: 8px;
+
+            font-size: 32px;
+
+            color: #17245f;
+        }
+
+
+        .form-section > p {
+
+            color: #68729a;
+
+            font-size: 15px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .field {
+
+            margin-bottom: 25px;
+        }
+
+
+        .field label {
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            color: #17245f;
+        }
+
+
+        .field input {
+
+            width: 100%;
+
+            padding: 18px 20px;
+
+            border-radius: 16px;
+
+            border:
+                1px solid #d7dcf2;
+
+            background:
+                rgba(255,255,255,0.92);
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 15px;
+
+            color: #202b63;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+
+        .field input::placeholder {
+
+            color: #9ba3bd;
+        }
+
+
+        .field input:focus {
+
+            border-color: #6255e8;
+
+            box-shadow:
+                0 0 0 5px rgba(98,85,232,0.10);
+
+            transform: translateY(-1px);
+        }
+
+
+        /* TWO FIELDS */
+
+        .two-fields {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 22px;
+        }
+
+
+        /* ADD BUTTON */
+
+        .add-btn {
+
+            width: 100%;
+
+            margin-top: 8px;
+
+            padding: 18px;
+
+            border: none;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #38aaf5,
+                    #6355eb,
+                    #a447ef
+                );
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            font-family: 'Poppins', sans-serif;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 14px 30px rgba(92,75,230,0.28);
+
+            transition: 0.3s;
+        }
+
+
+        .add-btn:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 20px 38px rgba(92,75,230,0.36);
+        }
+
+
+        .add-btn:active {
+
+            transform: translateY(0);
+        }
+
+
+        /* MESSAGE */
+
+        #message {
+
+            text-align: center;
+
+            font-weight: 600;
+
+            margin-top: 18px;
+
+            min-height: 25px;
+        }
+
+
+        /* RIGHT SIDE */
+
+        .info-section {
+
+            border-left:
+                1px solid rgba(90,90,150,0.15);
+
+            padding-left: 45px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        .student-icon {
+
+            font-size: 115px;
+
+            margin-bottom: 25px;
+
+            filter:
+                drop-shadow(
+                    0 18px 18px
+                    rgba(70,70,180,0.23)
+                );
+
+            animation:
+                float 3s ease-in-out infinite;
+        }
+
+
+        @keyframes float {
+
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+
+        /* INFO BOX */
+
+        .info-box {
+
+            width: 100%;
+
+            padding: 30px;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(224,239,255,0.90),
+                    rgba(239,230,255,0.92)
+                );
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255,255,255,0.8);
+        }
+
+
+        .info-box h3 {
+
+            margin-top: 0;
+
+            font-size: 23px;
+
+            color: #192765;
+        }
+
+
+        .info-box p {
+
+            color: #69739a;
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+
+        .info-box ul {
+
+            padding-left: 20px;
+
+            color: #59658f;
+
+            line-height: 2.1;
+
+            font-size: 14px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 950px) {
+
+            .topbar {
+
+                flex-direction: column;
+
+                gap: 18px;
+
+                padding: 22px;
+            }
+
+
+            .nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 14px;
+            }
+
+
+            .student-card {
+
+                grid-template-columns: 1fr;
+
+                padding: 35px;
+            }
+
+
+            .info-section {
+
+                border-left: none;
+
+                border-top:
+                    1px solid rgba(90,90,150,0.15);
+
+                padding-left: 0;
+
+                padding-top: 35px;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .container {
+
+                margin: 35px auto;
+
+                padding: 0 18px;
+            }
+
+
+            .page-heading h1 {
+
+                font-size: 44px;
+            }
+
+
+            .two-fields {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .student-card {
+
+                padding: 25px;
+            }
+
+
+            .logo {
+
+                font-size: 21px;
+
+                text-align: center;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <div class="topbar">
+
+        <div class="logo">
+            🎓 Online Library Management System
+        </div>
+
+
+        <div class="nav">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="books.html">
+                Books
+            </a>
+
+            <a href="students.html" class="active">
+                Students
+            </a>
+
+            <a href="issue.html">
+                Issue Book
+            </a>
+
+            <a href="return.html">
+                Return Book
+            </a>
+
+            <a href="issued.html">
+                Issued Books
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+
+        <div class="page-heading">
+
+            <h1>
+                Add New Student
+            </h1>
+
+            <p>
+                Register a new student in the library management system.
+            </p>
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <a href="students.html" class="back-btn">
+            ← Back to Students
+        </a>
+
+
+        <!-- CARD -->
+
+        <div class="student-card">
+
+
+            <!-- FORM -->
+
+            <div class="form-section">
+
+                <h2>
+                    🎓 Student Details
+                </h2>
+
+                <p>
+                    Enter the student's information below to create a new record.
+                </p>
+
+
+                <!-- NAME -->
+
+                <div class="field">
+
+                    <label>
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter student name"
+                    >
+
+                </div>
+
+
+                <!-- EMAIL + PHONE -->
+
+                <div class="two-fields">
+
+
+                    <div class="field">
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="studentEmail"
+                            placeholder="Enter email address"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="studentPhone"
+                            placeholder="Enter phone number"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    class="add-btn"
+                    onclick="addStudent()"
+                >
+                    ＋ Add Student
+                </button>
+
+
+                <p id="message"></p>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="info-section">
+
+
+                <div class="student-icon">
+                    🎓
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        ℹ️ Student Information
+                    </h3>
+
+                    <p>
+                        Make sure the student's details are correct before adding the record.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Student name is required.
+                        </li>
+
+                        <li>
+                            Use a valid email address.
+                        </li>
+
+                        <li>
+                            Enter the correct phone number.
+                        </li>
+
+                        <li>
+                            Each student gets a unique Student ID.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- TEMPORARY FRONTEND FUNCTION -->
+
+    <script>
+
+        function addStudent() {
+
+    let name =
+        document.getElementById("studentName").value.trim();
+
+    let email =
+        document.getElementById("studentEmail").value.trim();
+
+    let phone =
+        document.getElementById("studentPhone").value.trim();
+
+    let message =
+        document.getElementById("message");
+
+
+    if (name === "" || email === "" || phone === "") {
+
+        message.innerHTML =
+            "⚠️ Please fill all student details.";
+
+        message.style.color =
+            "#d64545";
+
+        return;
+    }
+
+
+    let formData =
+        new URLSearchParams();
+
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+
+
+    message.innerHTML =
+        "⏳ Adding student...";
+
+    message.style.color =
+        "#6555ee";
+
+
+    fetch("add-student", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type":
+                "application/x-www-form-urlencoded"
+        },
+
+        body:
+            formData.toString()
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if (data.success) {
+
+            message.innerHTML =
+                "✅ Student added successfully!";
+
+            message.style.color =
+                "#26965b";
+
+
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentEmail").value = "";
+            document.getElementById("studentPhone").value = "";
+
+        } else {
+
+            message.innerHTML =
+                "❌ " + data.message;
+
+            message.style.color =
+                "#d64545";
+        }
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        message.innerHTML =
+            "❌ Server error. Please try again.";
+
+        message.style.color =
+            "#d64545";
+
+    });
+
+}
+    </script>
+
+
+</body>
+
+</html>

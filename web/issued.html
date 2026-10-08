@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Issued Books</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(80,170,255,0.35),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(220,120,255,0.30),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 80% 85%,
+                    rgba(255,120,190,0.30),
+                    transparent 25%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #dff4ff,
+                    #eee7ff,
+                    #ffe8f5
+                );
+
+            color: #18245f;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .topbar {
+
+            margin: 18px 20px;
+
+            padding: 18px 35px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(20,52,130,0.95),
+                    rgba(72,52,150,0.90)
+                );
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            box-shadow:
+                0 15px 40px
+                rgba(50,50,120,0.25);
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: 700;
+        }
+
+
+        .nav {
+
+            display: flex;
+
+            gap: 28px;
+
+            align-items: center;
+        }
+
+
+        .nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 500;
+        }
+
+
+        .nav a.active {
+
+            background: white;
+
+            color: #3037c9;
+
+            padding: 12px 20px;
+
+            border-radius: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+
+            max-width: 1250px;
+
+            margin: 45px auto;
+
+            padding: 0 25px;
+        }
+
+
+        /* =========================
+           HEADING
+        ========================= */
+
+        .page-heading {
+
+            margin-bottom: 28px;
+        }
+
+
+        .page-heading h1 {
+
+            margin: 0;
+
+            font-family:
+                'DM Serif Display',
+                serif;
+
+            font-size: 48px;
+
+            color: #18256d;
+        }
+
+
+        .page-heading p {
+
+            margin-top: 8px;
+
+            color: #66709a;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           TOOLBAR
+        ========================= */
+
+        .toolbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .search-box {
+
+            flex: 1;
+
+            padding: 15px 20px;
+
+            border-radius: 15px;
+
+            border:
+                1px solid
+                rgba(150,150,200,0.25);
+
+            background:
+                rgba(255,255,255,0.75);
+
+            backdrop-filter: blur(10px);
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+
+        .search-box:focus {
+
+            border-color: #6856e8;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(100,80,230,0.10);
+        }
+
+
+        /* =========================
+           BUTTON CONTAINER
+        ========================= */
+
+        .toolbar-buttons {
+
+            display: flex;
+
+            gap: 12px;
+
+            align-items: center;
+        }
+
+
+        /* =========================
+           REFRESH BUTTON
+        ========================= */
+
+        .refresh-btn {
+
+            border: none;
+
+            padding: 14px 22px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #4baaf5,
+                    #6655ed
+                );
+
+            color: white;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            transition: 0.3s;
+        }
+
+
+        .refresh-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(70,70,180,0.20);
+        }
+
+
+        /* =========================
+           DASHBOARD BUTTON
+        ========================= */
+
+        .dashboard-btn {
+
+            border: none;
+
+            padding: 14px 22px;
+
+            border-radius: 14px;
+
+            background: white;
+
+            color: #3942b8;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            box-shadow:
+                0 8px 20px
+                rgba(60,60,130,0.12);
+
+            transition: 0.3s;
+        }
+
+
+        .dashboard-btn:hover {
+
+            transform: translateY(-2px);
+
+            background: #f1efff;
+
+            box-shadow:
+                0 12px 25px
+                rgba(60,60,130,0.18);
+        }
+
+
+        /* =========================
+           TABLE CARD
+        ========================= */
+
+        .table-card {
+
+            background:
+                rgba(255,255,255,0.68);
+
+            backdrop-filter: blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.8);
+
+            border-radius: 26px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 25px 60px
+                rgba(65,65,130,0.18);
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse:
+                separate;
+
+            border-spacing:
+                0 8px;
+
+            min-width: 850px;
+        }
+
+
+        thead th {
+
+            padding: 16px;
+
+            text-align: left;
+
+            color: #3e4779;
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        tbody tr {
+
+            background:
+                rgba(255,255,255,0.85);
+
+            transition: 0.25s;
+        }
+
+
+        tbody tr:hover {
+
+            transform:
+                scale(1.005);
+
+            box-shadow:
+                0 8px 20px
+                rgba(70,70,130,0.10);
+        }
+
+
+        tbody td {
+
+            padding: 17px 16px;
+
+            color: #4d557d;
+
+            font-size: 14px;
+        }
+
+
+        tbody td:first-child {
+
+            border-radius:
+                14px 0 0 14px;
+
+            font-weight: 700;
+
+            color: #303cc2;
+        }
+
+
+        tbody td:last-child {
+
+            border-radius:
+                0 14px 14px 0;
+        }
+
+
+        /* =========================
+           BADGES
+        ========================= */
+
+        .student-badge {
+
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background: #e9e7ff;
+
+            color: #5947c8;
+
+            font-weight: 600;
+
+            font-size: 12px;
+        }
+
+
+        .book-badge {
+
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background: #dff3ff;
+
+            color: #247bb7;
+
+            font-weight: 600;
+
+            font-size: 12px;
+        }
+
+
+        .active-badge {
+
+            display: inline-block;
+
+            padding: 6px 13px;
+
+            border-radius: 20px;
+
+            background: #e2f8eb;
+
+            color: #23834d;
+
+            font-weight: 600;
+
+            font-size: 12px;
+        }
+
+
+        .returned-badge {
+
+            display: inline-block;
+
+            padding: 6px 13px;
+
+            border-radius: 20px;
+
+            background: #f1f1f5;
+
+            color: #70758c;
+
+            font-weight: 600;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           EMPTY MESSAGE
+        ========================= */
+
+        .empty-message {
+
+            text-align: center;
+
+            padding: 55px 20px;
+
+            color: #747b9c;
+
+            font-size: 15px;
+        }
+
+
+        .empty-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .topbar {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .toolbar {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .toolbar-buttons {
+
+                justify-content: flex-end;
+            }
+
+
+            .page-heading h1 {
+
+                font-size: 40px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <div class="topbar">
+
+        <div class="logo">
+
+            📖 Online Library Management System
+
+        </div>
+
+
+        <div class="nav">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="books.html">
+                Books
+            </a>
+
+            <a href="students.html">
+                Students
+            </a>
+
+            <a href="issue.html">
+                Issue Book
+            </a>
+
+            <a href="return.html">
+                Return Book
+            </a>
+
+            <a href="issued.html"
+               class="active">
+
+                Issued Books
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <div class="container">
+
+
+        <div class="page-heading">
+
+            <h1>
+                Issued Books
+            </h1>
+
+            <p>
+                View all books currently issued to students.
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             SEARCH + BUTTONS
+        ========================= -->
+
+        <div class="toolbar">
+
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-box"
+                placeholder="🔍 Search by student ID or book ID..."
+            >
+
+
+            <div class="toolbar-buttons">
+
+
+                <button
+                    class="refresh-btn"
+                    onclick="loadIssuedBooks()">
+
+                    ↻ Refresh
+
+                </button>
+
+
+                <button
+                    class="dashboard-btn"
+                    onclick="window.location.href='dashboard.html'">
+
+                    🏠 Dashboard
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             TABLE
+        ========================= -->
+
+        <div class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Issue ID
+                        </th>
+
+                        <th>
+                            Student
+                        </th>
+
+                        <th>
+                            Book
+                        </th>
+
+                        <th>
+                            Issue Date
+                        </th>
+
+                        <th>
+                            Return Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="issuedTable">
+
+                    <tr>
+
+                        <td colspan="6">
+
+                            <div class="empty-message">
+
+                                <div class="empty-icon">
+                                    📚
+                                </div>
+
+                                Loading issued books...
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        let allIssuedBooks = [];
+
+
+        function loadIssuedBooks() {
+
+            fetch("issued")
+
+                .then(response => {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Unable to load issued books"
+                        );
+
+                    }
+
+                    return response.json();
+
+                })
+
+
+                .then(data => {
+
+                    allIssuedBooks = data;
+
+                    displayIssuedBooks(data);
+
+                })
+
+
+                .catch(error => {
+
+                    console.error(error);
+
+
+                    document.getElementById(
+                        "issuedTable"
+                    ).innerHTML = `
+
+                        <tr>
+
+                            <td colspan="6">
+
+                                <div class="empty-message">
+
+                                    <div class="empty-icon">
+                                        ⚠️
+                                    </div>
+
+                                    Unable to load issued books.
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    `;
+
+                });
+
+        }
+
+
+
+        function displayIssuedBooks(data) {
+
+            let table =
+                document.getElementById(
+                    "issuedTable"
+                );
+
+
+            if (data.length === 0) {
+
+                table.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="6">
+
+                            <div class="empty-message">
+
+                                <div class="empty-icon">
+                                    📚
+                                </div>
+
+                                No issued books found.
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+
+            table.innerHTML = "";
+
+
+            data.forEach(item => {
+
+
+                let status =
+
+                    item.return_date === null
+
+                    ?
+
+                    `<span class="active-badge">
+                        Active
+                    </span>`
+
+                    :
+
+                    `<span class="returned-badge">
+                        Returned
+                    </span>`;
+
+
+                let returnDate =
+
+                    item.return_date === null
+
+                    ?
+
+                    "—"
+
+                    :
+
+                    item.return_date;
+
+
+                table.innerHTML += `
+
+                    <tr>
+
+                        <td>
+                            #${item.issue_id}
+                        </td>
+
+                        <td>
+
+                            <span class="student-badge">
+
+                                Student #${item.student_id}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="book-badge">
+
+                                Book #${item.book_id}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            ${item.issue_date}
+                        </td>
+
+                        <td>
+                            ${returnDate}
+                        </td>
+
+                        <td>
+                            ${status}
+                        </td>
+
+                    </tr>
+
+                `;
+
+            });
+
+        }
+
+
+
+        /* SEARCH */
+
+        document
+            .getElementById("searchInput")
+            .addEventListener(
+                "input",
+                function () {
+
+                    let keyword =
+
+                        this.value
+                            .trim()
+                            .toLowerCase();
+
+
+                    let filtered =
+
+                        allIssuedBooks.filter(
+                            item =>
+
+                                String(
+                                    item.issue_id
+                                ).includes(keyword)
+
+                                ||
+
+                                String(
+                                    item.student_id
+                                ).includes(keyword)
+
+                                ||
+
+                                String(
+                                    item.book_id
+                                ).includes(keyword)
+
+                                ||
+
+                                String(
+                                    item.issue_date
+                                ).includes(keyword)
+
+                        );
+
+
+                    displayIssuedBooks(
+                        filtered
+                    );
+
+                }
+            );
+
+
+        /* LOAD DATA */
+
+        loadIssuedBooks();
+
+    </script>
+
+
+</body>
+
+</html>

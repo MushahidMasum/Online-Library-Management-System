@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Issue Book</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(circle at 10% 20%, rgba(80,170,255,0.35), transparent 25%),
+                radial-gradient(circle at 90% 20%, rgba(220,120,255,0.30), transparent 25%),
+                radial-gradient(circle at 80% 85%, rgba(255,120,190,0.30), transparent 25%),
+                linear-gradient(135deg, #dff4ff, #eee7ff, #ffe8f5);
+
+            color: #18245f;
+        }
+
+        /* NAVBAR */
+
+        .topbar {
+            margin: 18px 20px;
+            padding: 18px 35px;
+
+            border-radius: 22px;
+
+            background: linear-gradient(
+                90deg,
+                rgba(20,52,130,0.95),
+                rgba(72,52,150,0.90)
+            );
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 15px 40px rgba(50,50,120,0.25);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a.active {
+            background: white;
+            color: #3037c9;
+            padding: 12px 20px;
+            border-radius: 14px;
+            font-weight: 600;
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 1150px;
+            margin: 45px auto;
+            padding: 0 25px;
+        }
+
+        /* SMALL CORNER STYLE HEADING */
+
+        .page-heading {
+            margin-bottom: 28px;
+        }
+
+        .page-heading h1 {
+            margin: 0;
+
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 48px;
+            color: #18256d;
+        }
+
+        .page-heading p {
+            margin-top: 8px;
+            color: #66709a;
+            font-size: 16px;
+        }
+
+        /* FORM CARD */
+
+        .issue-card {
+
+            background: rgba(255,255,255,0.65);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(255,255,255,0.8);
+
+            border-radius: 28px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 25px 60px rgba(65,65,130,0.18);
+
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr;
+
+            gap: 50px;
+        }
+
+        .form-section h2 {
+            margin-top: 0;
+
+            font-size: 27px;
+
+            color: #17235f;
+        }
+
+        .form-section p {
+            color: #68729a;
+            margin-bottom: 30px;
+        }
+
+        /* INPUTS */
+
+        .field {
+            margin-bottom: 25px;
+        }
+
+        .field label {
+            display: block;
+
+            margin-bottom: 9px;
+
+            font-weight: 600;
+
+            color: #17245f;
+        }
+
+        .field input {
+
+            width: 100%;
+
+            padding: 16px 18px;
+
+            border-radius: 14px;
+
+            border: 1px solid #d8dcf2;
+
+            background: rgba(255,255,255,0.9);
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        .field input:focus {
+
+            border-color: #6555e8;
+
+            box-shadow:
+                0 0 0 4px rgba(100,80,230,0.12);
+        }
+
+        /* BUTTON */
+
+        .issue-btn {
+
+            width: 100%;
+
+            padding: 16px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #39aaf5,
+                    #6555ee,
+                    #a447ef
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 12px 25px rgba(92,75,230,0.25);
+        }
+
+        .issue-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 17px 30px rgba(92,75,230,0.35);
+        }
+
+        /* RIGHT SIDE */
+
+        .info-section {
+
+            border-left: 1px solid rgba(100,100,150,0.15);
+
+            padding-left: 40px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .book-icon {
+
+            font-size: 100px;
+
+            margin-bottom: 20px;
+
+            filter:
+                drop-shadow(0 15px 15px rgba(70,70,180,0.25));
+        }
+
+        .info-box {
+
+            width: 100%;
+
+            padding: 22px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(225,237,255,0.85),
+                    rgba(239,230,255,0.85)
+                );
+        }
+
+        .info-box h3 {
+
+            margin-top: 0;
+
+            color: #192765;
+        }
+
+        .info-box p {
+
+            margin-bottom: 0;
+
+            line-height: 1.7;
+
+            color: #69739a;
+
+            font-size: 14px;
+        }
+
+        #message {
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+
+            .topbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .issue-card {
+                grid-template-columns: 1fr;
+            }
+
+            .info-section {
+
+                border-left: none;
+
+                border-top: 1px solid rgba(100,100,150,0.15);
+
+                padding-left: 0;
+
+                padding-top: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <div class="topbar">
+
+        <div class="logo">
+            📖 Online Library Management System
+        </div>
+
+        <div class="nav">
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="books.html">Books</a>
+
+            <a href="students.html">Students</a>
+
+            <a href="issue.html" class="active">
+                Issue Book
+            </a>
+
+            <a href="return.html">Return Book</a>
+
+            <a href="issued.html">Issued Books</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+        <!-- HEADING -->
+
+        <div class="page-heading">
+
+            <h1>Issue Book</h1>
+
+            <p>
+                Issue a book to a registered student from the library.
+            </p>
+
+        </div>
+
+
+        <!-- CARD -->
+
+        <div class="issue-card">
+
+
+            <!-- FORM -->
+
+            <div class="form-section">
+
+                <h2>📚 Enter Details</h2>
+
+                <p>
+                    Provide the Student ID and Book ID to issue a book.
+                </p>
+
+
+                <div class="field">
+
+                    <label>
+                        Student ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="studentId"
+                        placeholder="Enter Student ID"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Book ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="bookId"
+                        placeholder="Enter Book ID"
+                    >
+
+                </div>
+
+
+                <button
+                    class="issue-btn"
+                    onclick="issueBook()"
+                >
+                    📤 Issue Book
+                </button>
+
+
+                <p id="message"></p>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="info-section">
+
+                <div class="book-icon">
+                    📚
+                </div>
+
+                <div class="info-box">
+
+                    <h3>
+                        ℹ️ Information
+                    </h3>
+
+                    <p>
+                        Make sure both Student ID and Book ID are valid.
+                        The book will be issued only if it is available
+                        in the library.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function issueBook() {
+
+    let studentId =
+        document.getElementById("studentId").value.trim();
+
+    let bookId =
+        document.getElementById("bookId").value.trim();
+
+    let message =
+        document.getElementById("message");
+
+
+    if (studentId === "" || bookId === "") {
+
+        message.innerHTML =
+            "⚠️ Please enter Student ID and Book ID!";
+
+        message.style.color =
+            "#d64545";
+
+        return;
+    }
+
+
+    if (
+        Number(studentId) <= 0 ||
+        Number(bookId) <= 0
+    ) {
+
+        message.innerHTML =
+            "⚠️ Please enter valid IDs.";
+
+        message.style.color =
+            "#d64545";
+
+        return;
+    }
+
+
+    let formData =
+        new URLSearchParams();
+
+    formData.append(
+        "studentId",
+        studentId
+    );
+
+    formData.append(
+        "bookId",
+        bookId
+    );
+
+
+    message.innerHTML =
+        "⏳ Issuing book...";
+
+    message.style.color =
+        "#6555ee";
+
+
+    fetch("issue-book", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type":
+                "application/x-www-form-urlencoded"
+        },
+
+        body:
+            formData.toString()
+
+    })
+
+    .then(response => {
+
+        return response.json();
+
+    })
+
+    .then(data => {
+
+        if (data.success) {
+
+            message.innerHTML =
+                "✅ " + data.message;
+
+            message.style.color =
+                "#26965b";
+
+            document.getElementById("studentId").value = "";
+
+            document.getElementById("bookId").value = "";
+
+        } else {
+
+            message.innerHTML =
+                "❌ " + data.message;
+
+            message.style.color =
+                "#d64545";
+        }
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        message.innerHTML =
+            "❌ Server error. Please try again.";
+
+        message.style.color =
+            "#d64545";
+
+    });
+
+}
+
+    </script>
+
+</body>
+
+</html>

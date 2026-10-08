@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Library Students</title>
+
+<link rel="stylesheet"
+      href="style.css?v=40">
+
+
+<!-- Google Fonts -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
+
+<style>
+
+/* =====================================
+          STUDENTS PAGE
+       ===================================== */
+
+.students-page {
+
+    min-height: 100vh;
+
+    padding: 45px 5% 70px;
+
+    font-family: 'Poppins', sans-serif;
+
+    background:
+
+    radial-gradient(
+        circle at 5% 10%,
+        rgba(129, 178, 255, 0.35),
+        transparent 28%
+    ),
+
+    radial-gradient(
+        circle at 95% 10%,
+        rgba(204, 151, 255, 0.35),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 85% 90%,
+        rgba(130, 230, 218, 0.25),
+        transparent 30%
+    ),
+
+    linear-gradient(
+        135deg,
+        #edf6ff,
+        #f7f2ff,
+        #f2fffc
+    );
+
+    color: #26335f;
+}
+
+
+/* =====================================
+          HEADER
+       ===================================== */
+
+.students-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+}
+
+
+.students-title h1 {
+
+    margin: 0;
+
+    font-family: 'DM Serif Display', serif;
+
+    font-size: 58px;
+
+    color: #172554;
+
+    line-height: 1.1;
+
+    letter-spacing: -1px;
+}
+
+
+.students-title p {
+
+    margin-top: 10px;
+
+    color: #7180a5;
+
+    font-size: 15px;
+}
+
+
+/* =====================================
+          DASHBOARD BUTTON
+       ===================================== */
+
+.dashboard-btn {
+
+    border: none;
+
+    padding: 13px 22px;
+
+    border-radius: 14px;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #4776ff,
+        #7955d9
+    );
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+    0 8px 22px rgba(83, 91, 220, 0.25);
+
+    transition: 0.25s;
+}
+
+
+.dashboard-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+    0 13px 28px rgba(83, 91, 220, 0.35);
+}
+
+
+/* =====================================
+          CONTROLS
+       ===================================== */
+
+.student-controls {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =====================================
+          SEARCH
+       ===================================== */
+
+.student-search {
+
+    flex: 1;
+
+    min-width: 280px;
+}
+
+
+.student-search input {
+
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 1px solid #dbe3f4;
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background: rgba(255,255,255,0.90);
+
+    color: #26335f;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    box-shadow:
+    0 8px 25px rgba(80,90,150,0.08);
+
+    transition: 0.25s;
+}
+
+
+.student-search input:focus {
+
+    border-color: #7185ff;
+
+    box-shadow:
+    0 0 0 4px rgba(113,133,255,0.12);
+}
+
+
+/* =====================================
+          REFRESH
+       ===================================== */
+
+.refresh-btn {
+
+    padding: 15px 21px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #5967ed,
+        #7b4fd3
+    );
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+    0 8px 20px rgba(86,90,210,0.20);
+
+    transition: 0.25s;
+}
+
+
+.refresh-btn:hover {
+
+    transform: translateY(-3px);
+}
+
+
+/* =====================================
+          ADD STUDENT
+       ===================================== */
+
+.add-btn {
+
+    padding: 15px 21px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #08a889,
+        #087b6b
+    );
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+    0 8px 20px rgba(0,150,130,0.20);
+
+    transition: 0.25s;
+}
+
+
+.add-btn:hover {
+
+    transform: translateY(-3px);
+}
+
+
+/* =====================================
+          TABLE CONTAINER
+       ===================================== */
+
+.students-table-container {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 22px;
+
+    background:
+    rgba(255,255,255,0.82);
+
+    box-shadow:
+    0 20px 55px rgba(66,78,140,0.15);
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* =====================================
+          TABLE
+       ===================================== */
+
+.students-page table {
+
+    width: 100%;
+
+    margin: 0;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    border-radius: 22px;
+
+    background: transparent;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* =====================================
+          TABLE HEADER
+       ===================================== */
+
+.students-page th {
+
+    padding: 20px 18px;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #e5ecff,
+        #eee7ff
+    );
+
+    color: #26335f;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================
+          TABLE DATA
+       ===================================== */
+
+.students-page td {
+
+    padding: 19px 18px;
+
+    font-size: 14px;
+
+    color: #435174;
+
+    background:
+    rgba(255,255,255,0.75);
+
+    border-bottom:
+    1px solid #edf0f7;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================
+          HOVER
+       ===================================== */
+
+.students-page tbody tr:hover td {
+
+    background: #edf3ff;
+
+    transition: 0.2s;
+}
+
+
+/* =====================================
+          STUDENT ID
+       ===================================== */
+
+.student-id {
+
+    color: #5365e8 !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* =====================================
+          STUDENT NAME
+       ===================================== */
+
+.student-name {
+
+    color: #172554 !important;
+
+    font-weight: 600 !important;
+}
+
+
+/* =====================================
+          EMAIL
+       ===================================== */
+
+.email-badge {
+
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #eeeaff;
+
+    color: #6355c7;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================
+          PHONE
+       ===================================== */
+
+.phone-text {
+
+    color: #087b6b !important;
+
+    font-weight: 600 !important;
+}
+
+
+/* =====================================
+          EMPTY MESSAGE
+       ===================================== */
+
+.empty-message {
+
+    text-align: center;
+
+    padding: 40px !important;
+
+    color: #7180a5 !important;
+
+    font-size: 15px !important;
+}
+
+
+/* =====================================
+          MOBILE
+       ===================================== */
+
+@media (max-width: 800px) {
+
+    .students-page {
+
+        padding: 30px 20px;
+    }
+
+
+    .students-top {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .students-title h1 {
+
+        font-size: 43px;
+    }
+
+
+    .student-controls {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .student-search {
+
+        width: 100%;
+    }
+
+
+    .refresh-btn,
+    .add-btn {
+
+        width: 100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body class="students-page">
+
+
+<!-- =====================================
+        HEADER
+   ===================================== -->
+
+<div class="students-top">
+
+    <div class="students-title">
+
+        <h1>Library Students</h1>
+
+        <p>
+            Manage and keep track of all registered students
+        </p>
+
+    </div>
+
+
+    <button
+        class="dashboard-btn"
+        onclick="window.location.href='dashboard.html'">
+
+        ← Dashboard
+
+    </button>
+
+</div>
+
+
+
+<!-- =====================================
+        CONTROLS
+   ===================================== -->
+
+<div class="student-controls">
+
+
+    <!-- SEARCH -->
+
+    <div class="student-search">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search by name, email or phone...">
+
+    </div>
+
+
+    <!-- REFRESH -->
+
+    <button
+        class="refresh-btn"
+        id="refreshButton">
+
+        ↻ Refresh Students
+
+    </button>
+
+
+    <!-- ADD STUDENT -->
+
+    <!--
+        This button will be visible
+        only for ADMIN.
+    -->
+
+    <button
+        class="add-btn"
+        id="addStudentButton"
+        onclick="window.location.href='add-student.html'">
+
+        + Add Student
+
+    </button>
+
+</div>
+
+
+
+<!-- =====================================
+        TABLE
+   ===================================== -->
+
+<div class="students-table-container">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Student Name</th>
+
+                <th>Email</th>
+
+                <th>Phone</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody id="studentBody">
+
+            <tr>
+
+                <td
+                    colspan="4"
+                    class="empty-message">
+
+                    Loading students...
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+<!-- =====================================
+        JAVASCRIPT
+   ===================================== -->
+
+<script>
+
+let allStudents = [];
+
+
+/* =====================================
+          ROLE BASED ACCESS
+       ===================================== */
+
+function checkUserRole() {
+
+    let username =
+        localStorage.getItem("loggedInUser");
+
+
+    let role =
+        localStorage.getItem("userRole");
+
+
+    /*
+        Fallback username
+    */
+
+    if (!username) {
+
+        username =
+            localStorage.getItem("username");
+
+    }
+
+
+    /*
+        If user is not logged in,
+        redirect to login.
+    */
+
+    if (!username || !role) {
+
+        window.location.replace(
+            "login.html"
+        );
+
+        return;
+
+    }
+
+
+    role =
+        role.toLowerCase().trim();
+
+
+    const addStudentButton =
+        document.getElementById(
+            "addStudentButton"
+        );
+
+
+    /*
+        ADMIN
+        Show Add Student button
+    */
+
+    if (role === "admin") {
+
+        addStudentButton.style.display =
+            "block";
+
+    }
+
+
+    /*
+        STUDENT
+        Hide Add Student button
+    */
+
+    else if (role === "student") {
+
+        addStudentButton.style.display =
+            "none";
+
+    }
+
+
+    /*
+        Unknown role
+    */
+
+    else {
+
+        localStorage.removeItem(
+            "loggedInUser"
+        );
+
+        localStorage.removeItem(
+            "username"
+        );
+
+        localStorage.removeItem(
+            "userRole"
+        );
+
+
+        window.location.replace(
+            "login.html"
+        );
+
+    }
+
+}
+
+
+/* =====================================
+          LOAD STUDENTS
+       ===================================== */
+
+function loadStudents() {
+
+    const body =
+        document.getElementById(
+            "studentBody"
+        );
+
+
+    body.innerHTML = `
+
+        <tr>
+
+            <td
+                colspan="4"
+                class="empty-message">
+
+                Loading students...
+
+            </td>
+
+        </tr>
+
+    `;
+
+
+    fetch("students")
+
+        .then(function(response) {
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Server error"
+                );
+
+            }
+
+            return response.json();
+
+        })
+
+
+        .then(function(data) {
+
+            console.log(
+                "Students received:",
+                data
+            );
+
+
+            allStudents = data;
+
+
+            displayStudents(
+                allStudents
+            );
+
+        })
+
+
+        .catch(function(error) {
+
+            console.error(
+                "Student loading error:",
+                error
+            );
+
+
+            body.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="4"
+                        class="empty-message">
+
+                        ❌ Error loading students
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+}
+
+
+/* =====================================
+          DISPLAY STUDENTS
+       ===================================== */
+
+function displayStudents(students) {
+
+    const body =
+        document.getElementById(
+            "studentBody"
+        );
+
+
+    body.innerHTML = "";
+
+
+    if (students.length === 0) {
+
+        body.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="4"
+                    class="empty-message">
+
+                    🔍 No students found
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    students.forEach(
+        function(student) {
+
+            const row = `
+
+                <tr>
+
+                    <td class="student-id">
+
+                        ${student.student_id}
+
+                    </td>
+
+
+                    <td class="student-name">
+
+                        ${student.name}
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="email-badge">
+
+                            ${student.email}
+
+                        </span>
+
+                    </td>
+
+
+                    <td class="phone-text">
+
+                        ${student.phone}
+
+                    </td>
+
+                </tr>
+
+            `;
+
+
+            body.innerHTML += row;
+
+        }
+    );
+
+}
+
+
+/* =====================================
+          SEARCH STUDENTS
+       ===================================== */
+
+function searchStudents() {
+
+    const searchText =
+
+        String(
+            document
+                .getElementById(
+                    "searchInput"
+                )
+                .value
+        )
+        .toLowerCase()
+        .trim();
+
+
+    const filteredStudents =
+
+        allStudents.filter(
+            function(student) {
+
+                const name =
+
+                    String(
+                        student.name || ""
+                    )
+                    .toLowerCase();
+
+
+                const email =
+
+                    String(
+                        student.email || ""
+                    )
+                    .toLowerCase();
+
+
+                const phone =
+
+                    String(
+                        student.phone || ""
+                    )
+                    .toLowerCase();
+
+
+                return (
+
+                    name.includes(
+                        searchText
+                    )
+
+                    ||
+
+                    email.includes(
+                        searchText
+                    )
+
+                    ||
+
+                    phone.includes(
+                        searchText
+                    )
+
+                );
+
+            }
+        );
+
+
+    displayStudents(
+        filteredStudents
+    );
+
+}
+
+
+/* =====================================
+          SEARCH EVENT
+       ===================================== */
+
+document
+    .getElementById(
+        "searchInput"
+    )
+    .addEventListener(
+        "input",
+        searchStudents
+    );
+
+
+/* =====================================
+          REFRESH EVENT
+       ===================================== */
+
+document
+    .getElementById(
+        "refreshButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            document
+                .getElementById(
+                    "searchInput"
+                )
+                .value = "";
+
+
+            loadStudents();
+
+        }
+    );
+
+
+
+checkUserRole();
+
+loadStudents();
+
+</script>
+
+
+</body>
+
+</html>

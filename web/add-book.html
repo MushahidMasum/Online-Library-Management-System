@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add New Book</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #18245f;
+
+            background:
+                radial-gradient(circle at 10% 20%, rgba(80,170,255,0.35), transparent 25%),
+                radial-gradient(circle at 90% 20%, rgba(220,120,255,0.30), transparent 25%),
+                radial-gradient(circle at 80% 85%, rgba(255,120,190,0.30), transparent 25%),
+                linear-gradient(135deg, #dff4ff, #eee7ff, #ffe8f5);
+        }
+
+        /* NAVBAR */
+
+        .topbar {
+            margin: 18px 20px;
+            padding: 18px 35px;
+
+            border-radius: 22px;
+
+            background: linear-gradient(
+                90deg,
+                rgba(20,52,130,0.95),
+                rgba(72,52,150,0.90)
+            );
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 15px 40px rgba(50,50,120,0.25);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a.active {
+            background: white;
+            color: #3037c9;
+            padding: 12px 20px;
+            border-radius: 14px;
+            font-weight: 600;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1250px;
+            margin: 45px auto;
+            padding: 0 25px;
+        }
+
+        /* HEADING */
+
+        .page-heading {
+            margin-bottom: 15px;
+        }
+
+        .page-heading h1 {
+            margin: 0;
+
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 52px;
+
+            color: #18256d;
+        }
+
+        .page-heading p {
+            margin-top: 8px;
+
+            color: #66709a;
+
+            font-size: 16px;
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn {
+            display: inline-block;
+
+            margin: 12px 0 25px;
+
+            padding: 12px 22px;
+
+            border-radius: 14px;
+
+            background: rgba(255,255,255,0.85);
+
+            color: #3542c4;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            box-shadow: 0 8px 20px rgba(60,60,130,0.12);
+
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-4px);
+            background: white;
+        }
+
+        /* MAIN CARD */
+
+        .book-card {
+
+            background: rgba(255,255,255,0.68);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(255,255,255,0.8);
+
+            border-radius: 28px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 25px 60px rgba(65,65,130,0.18);
+
+            display: grid;
+
+            grid-template-columns: 1.5fr 0.8fr;
+
+            gap: 40px;
+        }
+
+        /* FORM */
+
+        .form-section h2 {
+
+            margin-top: 0;
+
+            font-size: 28px;
+
+            color: #17235f;
+        }
+
+        .form-section > p {
+
+            color: #68729a;
+
+            margin-bottom: 28px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: 600;
+
+            color: #17245f;
+        }
+
+        .field input,
+        .field select {
+
+            width: 100%;
+
+            padding: 15px 17px;
+
+            border-radius: 14px;
+
+            border: 1px solid #d8dcf2;
+
+            background: rgba(255,255,255,0.9);
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        .field input:focus,
+        .field select:focus {
+
+            border-color: #6555e8;
+
+            box-shadow:
+                0 0 0 4px rgba(100,80,230,0.10);
+        }
+
+        .two-fields {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        /* ADD BUTTON */
+
+        .add-btn {
+
+            width: 100%;
+
+            padding: 16px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #39aaf5,
+                    #6555ee,
+                    #a447ef
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            font-family: 'Poppins', sans-serif;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 12px 25px rgba(92,75,230,0.25);
+        }
+
+        .add-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 17px 30px rgba(92,75,230,0.35);
+        }
+
+        /* RIGHT SIDE */
+
+        .info-section {
+
+            border-left: 1px solid rgba(100,100,150,0.15);
+
+            padding-left: 35px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .book-icon {
+
+            text-align: center;
+
+            font-size: 100px;
+
+            margin-bottom: 20px;
+
+            filter:
+                drop-shadow(0 15px 15px rgba(70,70,180,0.25));
+        }
+
+        .info-box {
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(225,237,255,0.85),
+                    rgba(239,230,255,0.85)
+                );
+        }
+
+        .info-box h3 {
+
+            margin-top: 0;
+
+            color: #192765;
+
+            font-size: 21px;
+        }
+
+        .info-box p {
+
+            color: #69739a;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        .info-box ul {
+
+            padding-left: 20px;
+
+            color: #59658f;
+
+            line-height: 2;
+        }
+
+        #message {
+
+            text-align: center;
+
+            font-weight: 600;
+
+            margin-top: 15px;
+
+            min-height: 24px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+
+            .topbar {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .book-card {
+
+                grid-template-columns: 1fr;
+            }
+
+            .info-section {
+
+                border-left: none;
+
+                border-top: 1px solid rgba(100,100,150,0.15);
+
+                padding-left: 0;
+
+                padding-top: 30px;
+            }
+
+            .two-fields {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <div class="topbar">
+
+        <div class="logo">
+            📖 Online Library Management System
+        </div>
+
+        <div class="nav">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="books.html" class="active">
+                Books
+            </a>
+
+            <a href="students.html">
+                Students
+            </a>
+
+            <a href="issue.html">
+                Issue Book
+            </a>
+
+            <a href="return.html">
+                Return Book
+            </a>
+
+            <a href="issued.html">
+                Issued Books
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+        <div class="page-heading">
+
+            <h1>Add New Book</h1>
+
+            <p>
+                Add a new book to the library collection.
+            </p>
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <a href="books.html" class="back-btn">
+            ← Back to Books
+        </a>
+
+
+        <!-- CARD -->
+
+        <div class="book-card">
+
+
+            <!-- FORM -->
+
+            <div class="form-section">
+
+                <h2>📖 Book Details</h2>
+
+                <p>
+                    Fill in the details below to add a new book.
+                </p>
+
+
+                <!-- TITLE -->
+
+                <div class="field">
+
+                    <label>
+                        Book Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="bookTitle"
+                        placeholder="Enter book title"
+                    >
+
+                </div>
+
+
+                <!-- AUTHOR + CATEGORY -->
+
+                <div class="two-fields">
+
+                    <div class="field">
+
+                        <label>
+                            Author
+                        </label>
+
+                        <input
+                            type="text"
+                            id="bookAuthor"
+                            placeholder="Enter author name"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Category
+                        </label>
+
+                        <select id="bookCategory">
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="Fiction">
+                                Fiction
+                            </option>
+
+                            <option value="Science">
+                                Science
+                            </option>
+
+                            <option value="Technology">
+                                Technology
+                            </option>
+
+                            <option value="History">
+                                History
+                            </option>
+
+                            <option value="Mathematics">
+                                Mathematics
+                            </option>
+
+                            <option value="Programming">
+                                Programming
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUANTITY -->
+
+                <div class="two-fields">
+
+                    <div class="field">
+
+                        <label>
+                            Total Quantity
+                        </label>
+
+                        <input
+                            type="number"
+                            id="bookQuantity"
+                            min="1"
+                            placeholder="Enter total quantity"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Available
+                        </label>
+
+                        <input
+                            type="number"
+                            id="bookAvailable"
+                            min="0"
+                            placeholder="Enter available quantity"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="add-btn"
+                    onclick="addBook()"
+                >
+                    ＋ Add Book
+                </button>
+
+
+                <p id="message"></p>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="info-section">
+
+                <div class="book-icon">
+                    📚
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        ℹ️ Information
+                    </h3>
+
+                    <p>
+                        Enter the complete details of the book.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Book title and author are required.
+                        </li>
+
+                        <li>
+                            Select the correct category.
+                        </li>
+
+                        <li>
+                            Available quantity cannot exceed total quantity.
+                        </li>
+
+                        <li>
+                            Quantity should be at least 1.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DATABASE CONNECTED JAVASCRIPT -->
+
+    <script>
+
+        function addBook() {
+
+            let title =
+                document.getElementById("bookTitle").value.trim();
+
+            let author =
+                document.getElementById("bookAuthor").value.trim();
+
+            let category =
+                document.getElementById("bookCategory").value;
+
+            let quantity =
+                document.getElementById("bookQuantity").value;
+
+            let available =
+                document.getElementById("bookAvailable").value;
+
+            let message =
+                document.getElementById("message");
+
+
+            /* VALIDATION */
+
+            if (
+                title === "" ||
+                author === "" ||
+                category === "" ||
+                quantity === "" ||
+                available === ""
+            ) {
+
+                message.innerHTML =
+                    "⚠️ Please fill all details.";
+
+                message.style.color =
+                    "#d64545";
+
+                return;
+            }
+
+
+            if (
+                Number(quantity) <= 0 ||
+                Number(available) < 0 ||
+                Number(available) > Number(quantity)
+            ) {
+
+                message.innerHTML =
+                    "⚠️ Please enter valid quantities.";
+
+                message.style.color =
+                    "#d64545";
+
+                return;
+            }
+
+
+            /* FORM DATA */
+
+            let formData =
+                new URLSearchParams();
+
+            formData.append("title", title);
+
+            formData.append("author", author);
+
+            formData.append("category", category);
+
+            formData.append("quantity", quantity);
+
+            formData.append("available", available);
+
+
+            /* SEND DATA TO JAVA SERVLET */
+
+            message.innerHTML =
+                "⏳ Adding book...";
+
+            message.style.color =
+                "#6555ee";
+
+
+            fetch("add-book", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/x-www-form-urlencoded"
+                },
+
+                body:
+                    formData.toString()
+
+            })
+
+            .then(response => {
+
+                return response.json();
+
+            })
+
+            .then(data => {
+
+                if (data.success) {
+
+                    message.innerHTML =
+                        "✅ Book added successfully!";
+
+                    message.style.color =
+                        "#26965b";
+
+
+                    /* CLEAR FORM */
+
+                    document.getElementById("bookTitle").value = "";
+
+                    document.getElementById("bookAuthor").value = "";
+
+                    document.getElementById("bookCategory").value = "";
+
+                    document.getElementById("bookQuantity").value = "";
+
+                    document.getElementById("bookAvailable").value = "";
+
+                }
+
+                else {
+
+                    message.innerHTML =
+                        "❌ " + data.message;
+
+                    message.style.color =
+                        "#d64545";
+                }
+
+            })
+
+            .catch(error => {
+
+                console.error(error);
+
+                message.innerHTML =
+                    "❌ Server error. Please try again.";
+
+                message.style.color =
+                    "#d64545";
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
