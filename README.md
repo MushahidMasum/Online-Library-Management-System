@@ -28,4 +28,14 @@ The objective of this project is to provide a simple and efficient way to manage
 4. Deploy the project on the server.
 5. Open the application in your web browser.
 
+## Team Members
+1. Mushahid Masum     ( Leader )
+2. Shivam Srivastava  ( Member )
+3. Shahid Afridi      ( Member )
+4. Aaryansh Singh     ( Member )
+
+
+
+
+
 
